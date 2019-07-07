@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sample 
+{
+class Program
+    {
+        
+
+        void Roots(int a,int b,int c)
+        {
+            double d, x1,x2;
+            d = b * b - 4 * a * c;
+            
+            if (d>0)
+            {
+                Console.WriteLine("Roots are real  and unequal");
+                x1 = (-b + Math.Sqrt(d)) / (2 * a);
+                x2 = (-b - Math.Sqrt(d)) / (2 * a);
+                Console.WriteLine("First root={0}",x1);
+                Console.WriteLine("Second root={0}", x2);
+            }
+           
+            else if(d==0)
+            {
+                Console.WriteLine("Roots are real and equal");
+                x1 = -b / (2.0 * a);
+                x2 = x1;
+                Console.WriteLine("First root={0}", x1);
+                Console.WriteLine("Second root={0}", x2);
+            }
+            else
+            {
+                Console.WriteLine("Roots are imaginary");
+            }
+           
+        }
+               static void Main(string[] args)
+        {
+            Program p = new Program();
+            int a = 1, b = -7, c = 12;
+            p.Roots(a,b,c);
+                   
+            Console.Read();
+                    }
+    }
+
+}
