@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Practice
+{
+    class Program
+    {
+       static int w = 0,l=1;
+        static int countWords(String str)
+        {
+            int state = w, wc = 0,i=0;
+            while(i<str.Length)
+            {
+                if(str[i]==' '|| str[i] == '\n' || str[i] == '\t')
+                {
+                    state = w;
+                }else if (state == w)
+                {
+                    state = l;
+                    wc++;
+                }
+                i++;
+            }
+            return wc;
+        }
+
+        static void Main(string[] args)
+        {
+            String str = "This is Deeksha";
+            Console.WriteLine(countWords(str));
+            Console.Read();
+        }
+    }
+}
+
