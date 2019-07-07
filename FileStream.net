@@ -1,0 +1,31 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace SampleTest
+{
+    
+    class Program 
+    {
+
+        static void Main(string[] args)
+        {
+           
+            FileStream f = new FileStream("e:/deeksha.txt", FileMode.Open);
+            byte[] b = new byte[f.Length];
+            f.Read(b, 0, b.Length);
+            for(int i=0;i<b.Length;i++)
+            {
+                Console.Write((char)b[i]);
+
+
+            }
+            Console.Read();
+        }
+    }
+}
+
