@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sample
+{
+ class Program
+    {
+        
+       
+        int CalculateAmount(int distance)
+        {
+            int bill;
+            if(distance<=5)
+            {
+                bill= 100;
+            }
+            else if (distance <= 15)
+            {
+                bill = 100 + (distance - 5) * 10;
+            }
+            else if(distance<=25)
+            {
+                bill = 100 +10*10 + (distance - 15) * 8;
+            }
+            else
+            {
+                bill = 100 +(10*8)+10*8+ (distance - 25) * 5;
+            }
+            
+            return bill;
+        }
+               static void Main(string[] args)
+        {
+            int distance, amt;
+           
+            Console.WriteLine("Enter the distance");
+            distance = int.Parse(Console.ReadLine());
+            Program p = new Program();
+            amt = p.CalculateAmount(distance);
+            Console.WriteLine(amt);
+                
+            Console.Read();
+                    }
+    }
+
+}
