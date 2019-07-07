@@ -1,0 +1,92 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SampleTest
+{
+    class Program
+    {
+        String name, add;
+        char ch;
+        int ap;
+        void getDetails()
+        {
+            Console.WriteLine("Enter the name of the customer");
+            name = Console.ReadLine();
+            Console.WriteLine("Enter the address of customer");
+            add = Console.ReadLine();
+            Console.WriteLine("Enter the amount of purchase");
+            ap = int.Parse(Console.ReadLine());
+            Console.WriteLine("for Laptop is l and for desktop is d");
+            ch = (char)Console.Read();
+        }
+        double Purchase(int ap)
+        {
+            double d, np = 0.0;
+            if (ch == 'l')
+            {
+                if (ap <= 25000)
+                {
+                    d = 0.0;
+                    np = ap;
+                }
+                else if (ap > 25000 && ap <= 57000)
+                {
+                    d = 5.0 / 100.0 * ap;
+                    np = ap - d;
+                }
+                else if (ap > 57000 && ap <= 100000)
+                {
+                    d = 7.5 / 100.0 * ap;
+                    np = ap - d;
+                }
+                else
+                {
+                    d = 10.0 / 100.0 * ap;
+                    np = ap - d;
+                }
+            }
+            else if (ch == 'd')
+            {
+                if (ap <= 25000)
+                {
+                    d = 5.0;
+                    np = ap;
+                }
+                else if (ap > 25000 && ap <= 57000)
+                {
+                    d = 7.5 / 100.0 * ap;
+                    np = ap - d;
+                }
+                else if (ap > 57000 && ap <= 100000)
+                {
+                    d = 10.0 / 100.0 * ap;
+                    np = ap - d;
+                }
+                else
+                {
+                    d = 15.0 / 100.0 * ap;
+                    np = ap - d;
+                }
+            }
+            return np;
+        }
+        void showResult()
+        {
+            getDetails();
+            Console.WriteLine(" Name of the customer = {0}" + name);
+            Console.WriteLine(" Address of the customer = {0}" + add);
+            Console.WriteLine(" Price paid by the customer = {0}" + ap);
+        }
+        static void Main(string[] args)
+        {
+            Program s = new Program();
+            s.showResult();
+            Console.Read();
+
+        }
+    }
+}
