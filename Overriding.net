@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SampleTest
+{
+    abstract class Calculation
+    {
+        // overridden nhi h
+       public virtual int add(int a,int b)
+        {
+            int c;
+            c = a + b;
+            return c;
+        }
+
+        internal int sub(int a,int b)// file accessable with in same assembly
+        {
+            int c;
+            c = a - b;
+            return c;
+        }
+    }
+    class Program : Calculation
+    {
+        public override int add(int a,int b)
+        {
+            int c;
+             c=a + b+10;
+            return c;
+
+        }
+
+        static void Main(string[] args)
+        {
+            int a,b;
+            Program s = new Program();
+           a= s.sub(9, 5);
+            b=s.add(4, 8);
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+            Console.Read();
+
+        }
+    }
+}
