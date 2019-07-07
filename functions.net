@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sample
+{
+class Program
+    {
+         int sumFunction(int[] a)
+        {
+            int sum = 0;
+            for(int i=0;i<a.Length;i++)
+            {
+                sum = sum + a[i];
+            }
+            return sum;
+        }
+
+        static void Main(string[] args)
+        {
+            int s;
+            int[] n = { 4, 5, 6 };
+            Program p = new Program();
+            s=p.sumFunction(n);
+            Console.WriteLine(s);
+            
+                    Console.Read();
+                }
+               
+            }
+}
