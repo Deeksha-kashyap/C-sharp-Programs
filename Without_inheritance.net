@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Demo
+{
+
+class Sample
+    {
+        public int Sum(int a,int b)// this is by default is private that's why we make it public
+        {
+            int sum=0;
+            sum = a + b;
+            return sum;
+        }
+    }
+
+
+    class Program
+    {
+        void show()
+        {
+            int n;
+            Sample s= new Sample();
+            n=s.Sum(1,4);
+            Console.WriteLine(n);
+        }
+        
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            p.show();
+            Console.Read();
+        }
+    }
+}
