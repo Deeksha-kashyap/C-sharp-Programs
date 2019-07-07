@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Calculation;
+
+namespace Calculation
+{
+    public class Mathematics
+    {
+        public int add(int a,int b)
+        {
+            int c;
+            c = a + b;
+            return c;
+        }
+    }
+}
+
+namespace SampleTest
+{
+    
+    class Program 
+    {
+
+        static void Main(string[] args)
+        {
+            Mathematics m = new Mathematics();
+            m.add(6, 8);
+                       Console.Read();
+
+        }
+    }
+}
