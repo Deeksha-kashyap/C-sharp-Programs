@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sample
+{
+class Program
+    {
+        static void Main(string[] args)
+        {
+           // Console.WriteLine("Hello world");
+            int a, b;
+            Console.Write("Enter two numbers");
+            a=int.Parse(Console.ReadLine());
+            b = int.Parse(Console.ReadLine());
+            if (a > b)
+            {
+                Console.WriteLine("{0} is greater than {1}",a,b);
+            }
+            else
+            {
+                Console.WriteLine("{0} is greater than {1}", b, a);
+            }
+            Console.Read();
+        }
+    }
+ }   
