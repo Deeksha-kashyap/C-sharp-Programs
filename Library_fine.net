@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sample
+{
+ class Program
+    {
+        int n;
+        
+        void getDetails()
+        {
+            Console.WriteLine("Enter the number of days");
+            n = int.Parse(Console.ReadLine());
+                        
+
+        }
+        double CalculateAmount(int n)
+        {
+            double c;
+            if (n <= 5)
+            {
+                c = 40.0 / 100.0 * n;
+            }
+            else if (n > 5 && n <= 10)
+            {
+                c = (n - 5) * 65.0 / 100.0 + 40.0 / 100.0 * 5;
+            }
+            else
+            {
+                c = (n - 10) * 80.0 / 100.0 + 65.0 / 100.0 * 5 + 40.0 / 100.0 * 5;
+            }
+            return c;
+            }
+        void ShowResult()
+        {
+            getDetails();
+            double c = CalculateAmount(n);
+            Console.WriteLine("Amount to be paid ={0} ", +c);
+        }
+
+            static void Main(string[] args)
+        {
+            Program p = new Program();
+            p.ShowResult();                   
+            Console.Read();
+                    }
+}
+}
