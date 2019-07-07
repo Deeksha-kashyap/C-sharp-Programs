@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SampleTest
+{
+    interface Calculation
+    {
+
+       int add(int a, int b);
+
+
+        int sub(int a, int b);
+        
+    }
+    class Program : Calculation
+    {
+        public int add(int a,int b)
+        {
+            int c;
+             c=a + b+10;
+            return c;
+
+        }
+        public int sub(int a,int b)
+        {
+            int c;
+            c = a - b;
+            return c;
+        }
+
+        static void Main(string[] args)
+        {
+            int a,b;
+            Program s = new Program();
+           a= s.sub(9, 5);
+            b=s.add(4, 8);
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+            
+            Console.Read();
+
+        }
+    }
+}
