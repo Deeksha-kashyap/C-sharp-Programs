@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Program
+{
+class Sample
+    {
+        // Multi Level inheritance Program
+        
+        
+        protected int Sum(int a,int b)
+        {
+            int sum=0;
+            sum = a + b;
+            return sum;
+        }
+    }
+    class Test:Sample
+    {
+        void show()
+        {
+            int n;
+            //Sample s= new Sample();
+            n = Sum(1, 4);
+            Console.WriteLine(n);
+        }
+
+    }
+
+    class Program : Test
+    {
+        void show()
+        {
+            int n;
+            //Sample s= new Sample();
+            n=Sum(1,4);
+            Console.WriteLine(n);
+        }
+        
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            p.show();
+            Console.Read();
+        }
+    }
+}
