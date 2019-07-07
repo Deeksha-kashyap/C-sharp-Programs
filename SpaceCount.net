@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SampleTest
+{
+    
+    class Program 
+    {
+        int SpaceCount(string str)
+        {
+            int sp = 0;
+            string str1;
+            for (int i = 0; i < str.Length; i++)
+            {
+                str1 = str.Substring(i, 1);
+                if (str1 == " ")
+                    sp++;
+            }
+            return sp;
+        }
+        static void Main(string[] args)
+        {
+            string str2;
+
+
+            Console.WriteLine("Enter the string");
+            str2 = Console.ReadLine();
+            Program p = new Program();
+
+            Console.WriteLine("Space count={0}", +p.SpaceCount(str2));
+            Console.Read();
+
+        }
+    }
+}
+
+
