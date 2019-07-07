@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sample
+{
+
+class Program
+    {
+       static void swapHalf(string a,string b)
+        {
+            int l1 = a.Length;
+            int l2 = b.Length;
+            string c = a.Substring(0, l1 / 2) + b.Substring(l2 / 2,l2 / 2 + 1);
+            string d = b.Substring(0, l2 / 2) +a.Substring(l1 / 2,l1 / 2);
+
+            Console.Write(c + "\n" +d + "\n");
+        }
+
+        static void Main(string[] args)
+        {
+            string a = "deeksha";
+            string b = "kashyap";
+            swapHalf(a, b);
+            Console.Read();
+        }
+    }
+
+}
