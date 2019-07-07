@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace SampleTest
+{
+    
+    class Program 
+    {
+
+        static void Main(string[] args)
+        {
+            if (!File.Exists("e:/deeksha.txt"))
+            {
+                File.Create("e:/deeksha.txt");
+                Console.WriteLine("File Created....");
+            }
+            string[] s = { "Hello Everybody", "How r u" };
+            File.WriteAllLines("e:/deeksha.txt", s);
+            Console.WriteLine("In the file all the lines are written");
+            Console.WriteLine("-----------------------------------");
+            string[] lines = File.ReadAllLines("e:/deeksha.txt");
+            if(File.Exists("e:/deeksha.txt"))
+            {
+                Console.WriteLine("File read.....");
+            }
+            Console.Read();
+        }
+    }
+}
+
