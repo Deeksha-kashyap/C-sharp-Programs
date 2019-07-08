@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ConsoleApp33
+{
+    class Program
+    {
+        void Sample()
+        {
+            DirectoryInfo dinfo = new DirectoryInfo("e:/c#programs");//directoryinfo define the directory
+            if (dinfo.Exists)
+            {
+                Console.WriteLine("Creation Time is: " + dinfo.CreationTime.ToShortDateString());
+                Console.WriteLine("Full Name is: " + dinfo.FullName);
+                Console.WriteLine("Last Time Access is: " + dinfo.LastAccessTime.ToShortDateString());
+                Console.WriteLine("File details are ");
+                FileInfo[] finfo = dinfo.GetFiles();
+                for (int i = 0; i < finfo.Length; i++)
+                {
+                    Console.WriteLine(finfo[i].FullName + "<File>");
+                }
+                Console.WriteLine("Directory details are ");
+                DirectoryInfo[] df = dinfo.GetDirectories();
+                for (int i = 0; i < df.Length; i++)
+                {
+                    Console.WriteLine(df[i].FullName + "<Dir>");
+                }
+            }
+            else
+            {
+                Console.WriteLine("File/Directory doesn't exist...");
+            }
+            Console.Read();
+        }
+        static void Main(string[] args)
+        {
+           
+            Program p = new Program();
+            p.Sample();
+            Console.Read();
+        }
+    }
+}
+    
+
+
+
+
+
+Output:
+
+
+Creation Time is: 6/27/2019
+Full Name is: e:\c#programs
+Last Time Access is: 7/8/2019
+File details are
+e:\c#programs\filehandling.txt<File>
+e:\c#programs\Notes of c#.txt<File>
+e:\c#programs\Program-6.7.19.txt<File>
+e:\c#programs\programs.txt<File>
+e:\c#programs\programs2.txt<File>
+e:\c#programs\set4.rtf<File>
+Directory details are
+e:\c#programs\Console1<Dir>
+e:\c#programs\ConsoleApp33<Dir>
+e:\c#programs\ConsoleApplication1<Dir>
+e:\c#programs\firstproject<Dir>
+e:\c#programs\Practice<Dir>
+e:\c#programs\Program<Dir>
+e:\c#programs\Project<Dir>
+e:\c#programs\Sample<Dir>
+e:\c#programs\Sample11<Dir>
+e:\c#programs\SampleTest<Dir>
