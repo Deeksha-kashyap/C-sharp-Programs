@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ConsoleApp33
+{
+    class Program
+    {
+        int age, term, amt;
+        void getDetails()
+        {
+            Console.WriteLine("Enter the age");
+            age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the term");
+            term = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the amount");
+            amt = int.Parse(Console.ReadLine());
+        }
+
+        double CalculateSum(int age,int term,int amt)
+        {
+            float rate = 7.0f;
+            double interest;
+            if(age>=60)
+            {
+                rate = rate + 1;
+            }
+            else
+            {
+                if(term<=3)
+                {
+                    rate = (rate - 0.5f) + term;
+                }
+                else
+                {
+                    rate = 10.0f;
+                }
+            }
+            interest = (amt * term * rate) / 100;
+
+            return interest;
+        }
+
+        void showResult()
+        {
+            getDetails();
+            double interest = CalculateSum(age, term, amt);
+            Console.WriteLine("Amt\tTerm\tInterest\tAmt Paid");
+            Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}",amt,term,age,interest,amt + interest);
+        }
+
+        static void Main(string[] args)
+        {
+            Program p=new Program();
+            p.showResult();
+            Console.Read();
+        }
+    }
+}
+    
+
