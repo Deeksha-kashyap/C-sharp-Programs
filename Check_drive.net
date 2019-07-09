@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ConsoleApp33
+{
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+           
+            Program p = new Program();
+            //DriveInfo dinfo = new DriveInfo();
+            DriveInfo[] d = DriveInfo.GetDrives();//driveinfo are object array
+            for(int i=0;i<d.Length;i++)
+            {
+                Console.WriteLine(d[i].Name);
+            }
+             Console.Read();
+        }
+    }
+}
