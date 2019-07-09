@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ConsoleApp33
+{
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+
+            Program p = new Program();
+            
+            string n;                
+                Console.WriteLine("Enter the drive");
+                n = Console.ReadLine();
+                DriveInfo drive = new DriveInfo(n);
+                if(drive.IsReady)
+                {
+                    DirectoryInfo dinfo = new DirectoryInfo(n);
+                    DirectoryInfo[] dn = dinfo.GetDirectories();
+                    for(int j=0;j<dn.Length;j++)
+                    {
+                        Console.WriteLine(dn[j].Name);
+                    }
+                }
+             Console.Read();
+        }
+    }
+}
