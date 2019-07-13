@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data.SqlClient;
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            SqlConnection con = new SqlConnection("Data Source=desktop-kr9upqb;Initial Catalog=deeksha;Integrated Security=True;Pooling=False");
+                    
+            string query = "select * from studentinfo";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            int hindi, english, math;
+            Console.WriteLine("hindi \t english \t math \t percentage");
+            while (dr.Read())
+            {
+                hindi = int.Parse(dr[2].ToString());
+                english = int.Parse(dr[3].ToString());
+                math = int.Parse(dr[4].ToString());
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(),(hindi+english+math)/3);
+            }
+            dr.Close();
+            con.Close();
+            Console.Read();
+        }
+    }
+}
