@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data.SqlClient;
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int rollno;
+            string sname;
+            SqlConnection con = new SqlConnection("Data Source=desktop-kr9upqb;Initial Catalog=deeksha;Integrated Security=True;Pooling=False");
+            Console.WriteLine("Enter the roll number which you want to delete");
+            rollno = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the name");
+            sname = Console.ReadLine();
+            string query = "Update studentinfo set sname='"+ sname +"' where rollno=" + rollno;
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("Record Inserted...");
+            con.Close();
+            Console.Read();
+        }
+    }
+}
