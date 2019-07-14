@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+           MessageBox.Show("Form Clicked..","Click Event", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            Form1.ActiveForm.BackColor = Color.Aqua;
+            Graphics g = CreateGraphics();
+            Pen p = new Pen(Color.Red);
+            g.DrawEllipse(p,100,100,100,100);
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            int x = e.X;
+            int y = e.Y;
+            Graphics g = CreateGraphics();
+            Pen p = new Pen(Color.Red);
+            g.DrawEllipse(p, x,y, 100, 100);
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = e.X;
+            int y = e.Y;
+            Graphics g = CreateGraphics();
+            Pen p = new Pen(Color.Red);
+            g.DrawEllipse(p, x, y, 100, 100);
+        }
+    }
+}
