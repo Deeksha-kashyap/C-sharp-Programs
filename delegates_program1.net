@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace delegate1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        static double multiply(int val1, int val2)
+        {
+            return val1 * val2;
+        }
+        public delegate double dlg(int a, int b);
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            dlg obj = new dlg(multiply);
+            int v1 = int.Parse(textBox1.Text.ToString());
+            int v2 = int.Parse(textBox2.Text.ToString());
+            double res = obj(v1, v2);
+            textBox3.Text = (res.ToString());
+        }
+    }
+}
