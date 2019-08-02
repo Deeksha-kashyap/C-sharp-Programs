@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace delegate3
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        delegate T SomeOp<T>(T v);// t is Generic type 
+        static int sum(int v)
+        {
+            return v;
+        }
+        static string reflect(string str)
+        {
+            return str;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SomeOp<int> intDel = sum;
+            MessageBox.Show(intDel(3).ToString());
+
+            SomeOp<string> strDel = reflect;
+            MessageBox.Show(strDel("Hello"));
+        }
+    }
+}
