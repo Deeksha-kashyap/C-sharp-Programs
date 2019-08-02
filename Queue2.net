@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Collections;
+
+
+namespace Queue_Program
+{
+    public partial class Form1 : Form
+    {
+        Queue q1;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            q1 = new Queue();
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)//Enter value=13, space=32
+            {
+                q1.Enqueue(textBox1.Text);
+                textBox1.Text = "";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+         /*   Object[] obj = q1.ToArray();
+            int i=0;
+            while (i < q1.Count)
+            {
+                listBox1.Items.Add(obj[i]);
+                i++;
+            }*/
+            listBox1.Items.Clear();
+            IEnumerator q = q1.GetEnumerator();//Interface Enumerator and GetEnumerator
+            while (q.MoveNext())
+            {
+                listBox1.Items.Add(q.Current.ToString());
+            }
+        }
+
+    }
+}
