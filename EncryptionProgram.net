@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.IO;
+using System.Security;
+using System.Security.Cryptography;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace EncrptedProgram
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        [System.Runtime.InteropServices.DllImport("KERNEL32.DLL", EntryPoint = "RtlZeroMemory")]
+        public static extern bool ZeroMemory(IntPtr Destination, int Length);
+        // Function to Generate a 64 bits Key.
+
+
+        
+        static string GenerateKey()
+        {
+            // Create an instance of Symmetric Algorithm. Key and IV is generated automatically.
+            DESCryptoServiceProvider desCrypto = (DESCryptoServiceProvider)DESCryptoServiceProvider.Create();
+            // Use the Automatically generated key for Encryption.
+            return ASCIIEncoding.ASCII.GetString(desCrypto.Key);
+        }
+
+        static void EncryptFile(string sInputFilename, string sOutputFilename, string sKey)
+        {
+            FileStream fsInput = new FileStream(sInputFilename, FileMode.Open, FileAccess.Read);
+            FileStream fsEncrypted = new FileStream(sOutputFilename, FileMode.Create, FileAccess.Write);
+            DESCryptoServiceProvider DES = new DESCryptoServiceProvider();
+            DES.Key = ASCIIEncoding.ASCII.GetBytes(sKey);
+            DES.IV = ASCIIEncoding.ASCII.GetBytes(sKey);
+            ICryptoTransform desencrypt = DES.CreateEncryptor();
+            CryptoStream cryptostream = new CryptoStream(fsEncrypted, desencrypt, CryptoStreamMode.Write);
+            byte[] bytearrayinput = new byte[fsInput.Length];
+            fsInput.Read(bytearrayinput, 0, bytearrayinput.Length);
+            cryptostream.Write(bytearrayinput, 0, bytearrayinput.Length);
+            cryptostream.Close();
+            fsInput.Close();
+            fsEncrypted.Close();
+        }
+
+        void SaveKey(string sSecretKey)
+        {
+            FileStream f = new FileStream("e:/Key.txt", FileMode.Create);
+            for (int i = 0; i < sSecretKey.Length; i++) f.WriteByte((byte)sSecretKey[i]);
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+                  // Must be 64 bits, 8 bytes.
+            // Distribute this key to the user who will decrypt this file.
+            string sSecretKey;
+            // Get the Key for the file to Encrypt.
+            sSecretKey = GenerateKey();
+            //textBox1.Text = sSecretKey;
+            SaveKey(sSecretKey);
+            // For additional security Pin the key.
+         //   GCHandle gch = GCHandle.Alloc(sSecretKey, GCHandleType.Pinned);
+            // Encrypt the file.
+        //    EncryptFile(@"E:\MyData.txt", @"E:\Encrypted.txt", sSecretKey);
+            // Remove the Key from memory.
+        //    ZeroMemory(gch.AddrOfPinnedObject(), sSecretKey.Length * 2);
+        //    gch.Free();
+        }
+        }
+    }
+
+
