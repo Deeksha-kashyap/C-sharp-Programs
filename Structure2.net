@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Structure2
+{
+    class MyClass
+    {
+        public string x;
+        public MyClass(string s)
+        {
+            x = s;
+        }
+    }
+    struct MyStruct
+    {
+        public MyClass refType;    //Ref type
+        public int valueType;     //value type
+        public MyStruct(string s)
+        {
+            refType = new MyClass(s);
+            valueType = 9;
+        }
+    }
+
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MyStruct valWithRef = new MyStruct("Initial value");
+            valWithRef.valueType = 6;
+
+            MyStruct valWithRef2;
+            valWithRef2 = valWithRef;
+
+            valWithRef2.refType.x = "I am New!";
+            valWithRef2.valueType = 7;
+
+            MessageBox.Show("Values after change:");
+            MessageBox.Show(valWithRef.refType.x);
+            MessageBox.Show(valWithRef2.refType.x);
+            MessageBox.Show(valWithRef.valueType.ToString());
+            MessageBox.Show(valWithRef2.valueType.ToString());
+        }
+    }
+}
